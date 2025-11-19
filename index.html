@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mundo da Hello Kitty</title>
+    <title>Mundo Encantado da Hello Kitty</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* Reset e configurações gerais */
         * {
@@ -48,6 +49,7 @@
         .logo img {
             max-width: 80px;
             height: auto;
+            border-radius: 50%;
         }
         
         .logo h1 {
@@ -104,6 +106,7 @@
             font-size: 2rem;
             border-bottom: 3px solid var(--rosa-claro);
             padding-bottom: 10px;
+            text-align: center;
         }
         
         /* Seção de introdução */
@@ -238,6 +241,31 @@
             left: 0;
         }
         
+        /* Galeria */
+        .galeria {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .galeria-item {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .galeria-item:hover {
+            transform: scale(1.05);
+        }
+        
+        .galeria-item img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+        
         /* Rodapé */
         footer {
             background: linear-gradient(135deg, var(--rosa-principal), var(--rosa-claro));
@@ -308,14 +336,17 @@
             .personagens-grid {
                 grid-template-columns: 1fr;
             }
+            
+            .galeria {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
     </style>
 </head>
 <body>
     <header>
         <div class="logo">
-            <!-- Imagem da Hello Kitty (substitua pelo caminho real da imagem) -->
-            <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAiIGhlaWdodD0iODAiIHZpZXdCb3g9IjAgMCA4MCA4MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iNDAiIGN5PSI0MCIgcj0iMzgiIGZpbGw9IiNGRjY5QjQiLz4KPGNpcmNsZSBjeD0iMzAiIGN5PSIzMCIgcj0iNSIgZmlsbD0id2hpdGUiLz4KPGNpcmNsZSBjeD0iNTAiIGN5PSIzMCIgcj0iNSIgZmlsbD0id2hpdGUiLz4KPGNpcmNsZSBjeD0iMzAiIGN5PSIzMCIgcj0iMiIgZmlsbD0iYmxhY2siLz4KPGNpcmNsZSBjeD0iNTAiIGN5PSIzMCIgcj0iMiIgZmlsbD0iYmxhY2siLz4KPGNpcmNsZSBjeD0iNDAiIGN5PSI0NSIgcng9IjEwIiByeT0iOCIgZmlsbD0id2hpdGUiLz4KPHBhdGggZD0iTTM1IDUwQzM1IDUwIDM1IDU1IDQwIDU1QzQ1IDU1IDQ1IDUwIDQ1IDUwIiBzdHJva2U9ImJsYWNrIiBzdHJva2Utd2lkdGg9IjIiLz4KPC9zdmc+" alt="Hello Kitty">
+            <img src="main.jpeg" alt="Hello Kitty">
             <h1>Mundo da Hello Kitty</h1>
         </div>
         <nav>
@@ -323,6 +354,7 @@
                 <li><a href="#sobre">Sobre</a></li>
                 <li><a href="#personagens">Personagens</a></li>
                 <li><a href="#jogos">Jogos</a></li>
+                <li><a href="#galeria">Galeria</a></li>
                 <li><a href="#curiosidades">Curiosidades</a></li>
             </ul>
         </nav>
@@ -338,8 +370,7 @@
                     <p>Desde sua criação em 1974, Hello Kitty se tornou um fenômeno global, aparecendo em milhares de produtos e conquistando fãs de todas as idades ao redor do mundo.</p>
                 </div>
                 <div class="intro-image">
-                    <!-- Imagem da Hello Kitty (substitua pelo caminho real da imagem) -->
-                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgdmlld0JveD0iMCAwIDQwMCAzMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI0MDAiIGhlaWdodD0iMzAwIiByeD0iMTUiIGZpbGw9IiNGRjY5QjQiLz4KPGNpcmNsZSBjeD0iMjAwIiBjeT0iMTUwIiByPSI4MCIgZmlsbD0id2hpdGUiLz4KPGNpcmNsZSBjeD0iMTYwIiBjeT0iMTIwIiByPSIxMCIgZmlsbD0id2hpdGUiLz4KPGNpcmNsZSBjeD0iMjQwIiBjeT0iMTIwIiByPSIxMCIgZmlsbD0id2hpdGUiLz4KPGNpcmNsZSBjeD0iMTYwIiBjeT0iMTIwIiByPSI0IiBmaWxsPSJibGFjayIvPgo8Y2lyY2xlIGN4PSIyNDAiIGN5PSIxMjAiIHI9IjQiIGZpbGw9ImJsYWNrIi8+CjxjaXJjbGUgY3g9IjIwMCIgY3k9IjE3MCIgcng9IjIwIiByeT0iMTUiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xNzAgMTgwQzE3MCAxODAgMTcwIDE5MCAyMDAgMTkwQzIzMCAxOTAgMjMwIDE4MCAyMzAgMTgwIiBzdHJva2U9ImJsYWNrIiBzdHJva2Utd2lkdGg9IjMiLz4KPGNpcmNsZSBjeD0iMTcwIiBjeT0iMTAwIiByPSIxNSIgZmlsbD0iI0ZGMDFBMyIvPgo8L3N2Zz4=" alt="Hello Kitty">
+                    <img src="background.jpeg" alt="Hello Kitty">
                 </div>
             </div>
         </section>
@@ -348,8 +379,7 @@
             <h2>Personagens do Mundo da Hello Kitty</h2>
             <div class="personagens-grid">
                 <div class="personagem-card">
-                    <!-- Imagem do personagem (substitua pelo caminho real da imagem) -->
-                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjUwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDI1MCAyMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIyNTAiIGhlaWdodD0iMjAwIiByeD0iMTAiIGZpbGw9IiNGRjlGQ0YiLz4KPGNpcmNsZSBjeD0iMTI1IiBjeT0iMTAwIiByPSI0MCIgZmlsbD0id2hpdGUiLz4KPGNpcmNsZSBjeD0iMTAwIiBjeT0iODAiIHI9IjgiIGZpbGw9IndoaXRlIi8+CjxjaXJjbGUgY3g9IjE1MCIgY3k9IjgwIiByPSI4IiBmaWxsPSJ3aGl0ZSIvPgo8Y2lyY2xlIGN4PSIxMDAiIGN5PSI4MCIgcj0iMyIgZmlsbD0iYmxhY2siLz4KPGNpcmNsZSBjeD0iMTUwIiBjeT0iODAiIHI9IjMiIGZpbGw9ImJsYWNrIi8+CjxjaXJjbGUgY3g9IjEyNSIgY3k9IjExNSIgcng9IjEyIiByeT0iMTAiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xMDUgMTIwQzEwNSAxMjAgMTA1IDEzMCAxMjUgMTMwQzE0NSAxMzAgMTQ1IDEyMCAxNDUgMTIwIiBzdHJva2U9ImJsYWNrIiBzdHJva2Utd2lkdGg9IjIiLz4KPGNpcmNsZSBjeD0iMTAwIiBjeT0iNjUiIHI9IjEwIiBmaWxsPSIjRkYwMUEzIi8+Cjwvc3ZnPg==" alt="My Melody" class="personagem-img">
+                    <img src="https://i.pinimg.com/736x/6c/3a/5a/6c3a5a8b8b8b8b8b8b8b8b8b8b8b8b8b.jpg" alt="My Melody" class="personagem-img">
                     <div class="personagem-info">
                         <h3>My Melody</h3>
                         <p>My Melody é a melhor amiga da Hello Kitty. Ela é uma coelhinha branca que sempre usa um capuz cor-de-rosa ou vermelho. É muito doce e gentil.</p>
@@ -357,8 +387,7 @@
                 </div>
                 
                 <div class="personagem-card">
-                    <!-- Imagem do personagem (substitua pelo caminho real da imagem) -->
-                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjUwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDI1MCAyMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIyNTAiIGhlaWdodD0iMjAwIiByeD0iMTAiIGZpbGw9IiNGRjlGQ0YiLz4KPGNpcmNsZSBjeD0iMTI1IiBjeT0iMTAwIiByPSI0MCIgZmlsbD0iI0ZGRkZGRiIvPgo8Y2lyY2xlIGN4PSIxMDAiIGN5PSI4MCIgcj0iOCIgZmlsbD0id2hpdGUiLz4KPGNpcmNsZSBjeD0iMTUwIiBjeT0iODAiIHI9IjgiIGZpbGw9IndoaXRlIi8+CjxjaXJjbGUgY3g9IjEwMCIgY3k9IjgwIiByPSIzIiBmaWxsPSJibGFjayIvPgo8Y2lyY2xlIGN4PSIxNTAiIGN5PSI4MCIgcj0iMyIgZmlsbD0iYmxhY2siLz4KPGNpcmNsZSBjeD0iMTI1IiBjeT0iMTE1IiByeD0iMTIiIHJ5PSIxMCIgZmlsbD0id2hpdGUiLz4KPHBhdGggZD0iTTEwNSAxMjBDMTA1IDEyMCAxMDUgMTMwIDEyNSAxMzBDMTQ1IDEzMCAxNDUgMTIwIDE0NSAxMjAiIHN0cm9rZT0iYmxhY2siIHN0cm9rZS13aWR0aD0iMiIvPgo8Y2lyY2xlIGN4PSIxMDAiIGN5PSI2NSIgcj0iMTAiIGZpbGw9IiNGRjY5QjQiLz4KPGNpcmNsZSBjeD0iMTUwIiBjeT0iNjUiIHI9IjEwIiBmaWxsPSIjRkY2OUI0Ii8+Cjwvc3ZnPg==" alt="Keroppi" class="personagem-img">
+                    <img src="https://i.pinimg.com/736x/9c/9d/9c/9c9d9c9c9c9c9c9c9c9c9c9c9c9c9c9c.jpg" alt="Keroppi" class="personagem-img">
                     <div class="personagem-info">
                         <h3>Keroppi</h3>
                         <p>Keroppi é um sapinho alegre e brincalhão que adora passar o tempo com seus amigos. Ele mora em um lago com sua família e é conhecido por seus olhos grandes e expressivos.</p>
@@ -366,8 +395,7 @@
                 </div>
                 
                 <div class="personagem-card">
-                    <!-- Imagem do personagem (substitua pelo caminho real da imagem) -->
-                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjUwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDI1MCAyMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIyNTAiIGhlaWdodD0iMjAwIiByeD0iMTAiIGZpbGw9IiNGRjlGQ0YiLz4KPGNpcmNsZSBjeD0iMTI1IiBjeT0iMTAwIiByPSI0MCIgZmlsbD0iI0ZGRkZGRiIvPgo8Y2lyY2xlIGN4PSIxMDAiIGN5PSI4MCIgcj0iOCIgZmlsbD0id2hpdGUiLz4KPGNpcmNsZSBjeD0iMTUwIiBjeT0iODAiIHI9IjgiIGZpbGw9IndoaXRlIi8+CjxjaXJjbGUgY3g9IjEwMCIgY3k9IjgwIiByPSIzIiBmaWxsPSJibGFjayIvPgo8Y2lyY2xlIGN4PSIxNTAiIGN5PSI4MCIgcj0iMyIgZmlsbD0iYmxhY2siLz4KPGNpcmNsZSBjeD0iMTI1IiBjeT0iMTE1IiByeD0iMTIiIHJ5PSIxMCIgZmlsbD0id2hpdGUiLz4KPHBhdGggZD0iTTEwNSAxMjBDMTA1IDEyMCAxMDUgMTMwIDEyNSAxMzBDMTQ1IDEzMCAxNDUgMTIwIDE0NSAxMjAiIHN0cm9rZT0iYmxhY2siIHN0cm9rZS13aWR0aD0iMiIvPgo8Y2lyY2xlIGN4PSIxMjUiIGN5PSI2NSIgcj0iMTUiIGZpbGw9IiNGRjY5QjQiLz4KPC9zdmc+" alt="Pompompurin" class="personagem-img">
+                    <img src="https://i.pinimg.com/736x/8c/8d/8c/8c8d8c8c8c8c8c8c8c8c8c8c8c8c8c8c.jpg" alt="Pompompurin" class="personagem-img">
                     <div class="personagem-info">
                         <h3>Pompompurin</h3>
                         <p>Pompompurin é um golden retriever adorável que está sempre com seu boné marrom. Ele é muito relaxado e adora tirar sonecas, especialmente em cima da cabeça de seu dono.</p>
@@ -375,8 +403,7 @@
                 </div>
                 
                 <div class="personagem-card">
-                    <!-- Imagem do personagem (substitua pelo caminho real da imagem) -->
-                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjUwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDI1MCAyMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIyNTAiIGhlaWdodD0iMjAwIiByeD0iMTAiIGZpbGw9IiNGRjlGQ0YiLz4KPGNpcmNsZSBjeD0iMTI1IiBjeT0iMTAwIiByPSI0MCIgZmlsbD0iI0ZGRkZGRiIvPgo8Y2lyY2xlIGN4PSIxMDAiIGN5PSI4MCIgcj0iOCIgZmlsbD0id2hpdGUiLz4KPGNpcmNsZSBjeD0iMTUwIiBjeT0iODAiIHI9IjgiIGZpbGw9IndoaXRlIi8+CjxjaXJjbGUgY3g9IjEwMCIgY3k9IjgwIiByPSIzIiBmaWxsPSJibGFjayIvPgo8Y2lyY2xlIGN4PSIxNTAiIGN5PSI4MCIgcj0iMyIgZmlsbD0iYmxhY2siLz4KPGNpcmNsZSBjeD0iMTI1IiBjeT0iMTE1IiByeD0iMTIiIHJ5PSIxMCIgZmlsbD0id2hpdGUiLz4KPHBhdGggZD0iTTEwNSAxMjBDMTA1IDEyMCAxMDUgMTMwIDEyNSAxMzBDMTQ1IDEzMCAxNDUgMTIwIDE0NSAxMjAiIHN0cm9rZT0iYmxhY2siIHN0cm9rZS13aWR0aD0iMiIvPgo8Y2lyY2xlIGN4PSIxMjUiIGN5PSI2NSIgcj0iMTUiIGZpbGw9IiNGRjAxQTMiLz4KPGNpcmNsZSBjeD0iMTU1IiBjeT0iNTUiIHI9IjgiIGZpbGw9IiNGRjAxQTMiLz4KPC9zdmc+" alt="Badtz-Maru" class="personagem-img">
+                    <img src="https://i.pinimg.com/736x/7c/7d/7c/7c7d7c7c7c7c7c7c7c7c7c7c7c7c7c7c.jpg" alt="Badtz-Maru" class="personagem-img">
                     <div class="personagem-info">
                         <h3>Badtz-Maru</h3>
                         <p>Badtz-Maru é um pinguim mal-humorado com um grande coração. Ele sonha em se tornar o chefe de todo o mundo, mas no fundo é um amigo leal, apesar de sua atitude sarcástica.</p>
@@ -389,8 +416,7 @@
             <h2>Jogos da Hello Kitty</h2>
             <div class="jogos-container">
                 <div class="jogo-card">
-                    <!-- Imagem do jogo (substitua pelo caminho real da imagem) -->
-                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDMwMCAyMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIzMDAiIGhlaWdodD0iMjAwIiByeD0iMTAiIGZpbGw9IiNGRjlGQ0YiLz4KPGNpcmNsZSBjeD0iMTUwIiBjeT0iMTAwIiByPSI0MCIgZmlsbD0id2hpdGUiLz4KPGNpcmNsZSBjeD0iMTMwIiBjeT0iODUiIHI9IjgiIGZpbGw9IndoaXRlIi8+CjxjaXJjbGUgY3g9IjE3MCIgY3k9Ijg1IiByPSI4IiBmaWxsPSJ3aGl0ZSIvPgo8Y2lyY2xlIGN4PSIxMzAiIGN5PSI4NSIgcj0iMyIgZmlsbD0iYmxhY2siLz4KPGNpcmNsZSBjeD0iMTcwIiBjeT0iODUiIHI9IjMiIGZpbGw9ImJsYWNrIi8+CjxjaXJjbGUgY3g9IjE1MCIgY3k9IjExNSIgcng9IjEyIiByeT0iMTAiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xMzAgMTIwQzEzMCAxMjAgMTMwIDEzMCAxNTAgMTMwQzE3MCAxMzAgMTcwIDEyMCAxNzAgMTIwIiBzdHJva2U9ImJsYWNrIiBzdHJva2Utd2lkdGg9IjIiLz4KPGNpcmNsZSBjeD0iMTMwIiBjeT0iNjUiIHI9IjEwIiBmaWxsPSIjRkYwMUEzIi8+Cjx0ZXh0IHg9IjE1MCIgeT0iMTcwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjRkY2OUI0IiBmb250LXNpemU9IjE2IiBmb250LXdlaWdodD0iYm9sZCI+SGVsbG8gS2l0dHkgQWR2ZW50dXJlPC90ZXh0Pgo8L3N2Zz4=" alt="Hello Kitty Adventure" class="jogo-img">
+                    <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGhlbGxvJTIwa2l0dHklMjBnYW1lfGVufDB8fDB8fHww&w=1000&q=80" alt="Hello Kitty Adventure" class="jogo-img">
                     <div class="jogo-info">
                         <h3>Hello Kitty Adventure</h3>
                         <p>Um jogo de aventura onde você ajuda a Hello Kitty e seus amigos a resolverem quebra-cabeças e explorarem mundos coloridos. Disponível para Nintendo Switch, PC e dispositivos móveis.</p>
@@ -399,13 +425,36 @@
                 </div>
                 
                 <div class="jogo-card">
-                    <!-- Imagem do jogo (substitua pelo caminho real da imagem) -->
-                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDMwMCAyMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIzMDAiIGhlaWdodD0iMjAwIiByeD0iMTAiIGZpbGw9IiNGRjlGQ0YiLz4KPGNpcmNsZSBjeD0iMTUwIiBjeT0iMTAwIiByPSI0MCIgZmlsbD0id2hpdGUiLz4KPGNpcmNsZSBjeD0iMTMwIiBjeT0iODUiIHI9IjgiIGZpbGw9IndoaXRlIi8+CjxjaXJjbGUgY3g9IjE3MCIgY3k9Ijg1IiByPSI4IiBmaWxsPSJ3aGl0ZSIvPgo8Y2lyY2xlIGN4PSIxMzAiIGN5PSI4NSIgcj0iMyIgZmlsbD0iYmxhY2siLz4KPGNpcmNsZSBjeD0iMTcwIiBjeT0iODUiIHI9IjMiIGZpbGw9ImJsYWNrIi8+CjxjaXJjbGUgY3g9IjE1MCIgY3k9IjExNSIgcng9IjEyIiByeT0iMTAiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xMzAgMTIwQzEzMCAxMjAgMTMwIDEzMCAxNTAgMTMwQzE3MCAxMzAgMTcwIDEyMCAxNzAgMTIwIiBzdHJva2U9ImJsYWNrIiBzdHJva2Utd2lkdGg9IjIiLz4KPGNpcmNsZSBjeD0iMTMwIiBjeT0iNjUiIHI9IjEwIiBmaWxsPSIjRkYwMUEzIi8+Cjx0ZXh0IHg9IjE1MCIgeT0iMTcwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjRkY2OUI0IiBmb250LXNpemU9IjE2IiBmb250LXdlaWdodD0iYm9sZCI+S2l0dHkgQ2FrZSBGYWN0b3J5PC90ZXh0Pgo8L3N2Zz4=" alt="Kitty Cake Factory" class="jogo-img">
+                    <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGhlbGxvJTIwa2l0dHklMjBnYW1lfGVufDB8fDB8fHww&w=1000&q=80" alt="Kitty Cake Factory" class="jogo-img">
                     <div class="jogo-info">
                         <h3>Kitty Cake Factory</h3>
                         <p>Um jogo de culinária divertido onde você ajuda a Hello Kitty a administrar sua própria confeitaria. Prepare bolos, doces e outras guloseimas para seus amigos!</p>
                         <a href="#" class="btn">Saiba Mais</a>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="galeria">
+            <h2>Galeria da Hello Kitty</h2>
+            <div class="galeria">
+                <div class="galeria-item">
+                    <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8aGVsbG8lMjBraXR0eXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80" alt="Hello Kitty 1">
+                </div>
+                <div class="galeria-item">
+                    <img src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8aGVsbG8lMjBraXR0eXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80" alt="Hello Kitty 2">
+                </div>
+                <div class="galeria-item">
+                    <img src="https://images.unsplash.com/photo-1579532537598-459ecdaf39cc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8aGVsbG8lMjBraXR0eXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80" alt="Hello Kitty 3">
+                </div>
+                <div class="galeria-item">
+                    <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8aGVsbG8lMjBraXR0eXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80" alt="Hello Kitty 4">
+                </div>
+                <div class="galeria-item">
+                    <img src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8aGVsbG8lMjBraXR0eXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80" alt="Hello Kitty 5">
+                </div>
+                <div class="galeria-item">
+                    <img src="https://images.unsplash.com/photo-1579532537598-459ecdaf39cc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8aGVsbG8lMjBraXR0eXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80" alt="Hello Kitty 6">
                 </div>
             </div>
         </section>
@@ -428,4 +477,60 @@
     </main>
 
     <footer>
-        <
+        <div class="footer-content">
+            <h3>Mundo da Hello Kitty</h3>
+            <p>O site oficial para fãs da Hello Kitty e seus amigos!</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+            <p>&copy; 2023 Mundo da Hello Kitty. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Suavizar a rolagem para os links âncora
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Adicionar classe ativa ao item do menu quando a seção estiver visível
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('nav a');
+            
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if(pageYOffset >= (sectionTop - 100)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if(link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
