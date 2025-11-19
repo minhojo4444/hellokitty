@@ -266,6 +266,106 @@
             object-fit: cover;
         }
         
+        /* Estilos do Jogo de Memória */
+        .jogo-memoria {
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .controles-jogo {
+            margin-bottom: 20px;
+        }
+        
+        .controles-jogo button {
+            background-color: var(--rosa-principal);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 0 10px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .controles-jogo button:hover {
+            background-color: var(--rosa-escuro);
+            transform: scale(1.05);
+        }
+        
+        .info-jogo {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--rosa-escuro);
+        }
+        
+        .tabuleiro-jogo {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .carta {
+            aspect-ratio: 1;
+            background-color: var(--rosa-claro);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            cursor: pointer;
+            transform-style: preserve-3d;
+            transition: transform 0.5s;
+        }
+        
+        .carta.virada {
+            transform: rotateY(180deg);
+        }
+        
+        .carta .frente, .carta .verso {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+        }
+        
+        .carta .frente {
+            background-color: var(--rosa-principal);
+            color: white;
+            transform: rotateY(180deg);
+        }
+        
+        .carta .verso {
+            background-color: var(--rosa-claro);
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='40' fill='%23ff69b4'/%3E%3Ccircle cx='35' cy='40' r='5' fill='white'/%3E%3Ccircle cx='65' cy='40' r='5' fill='white'/%3E%3Ccircle cx='35' cy='40' r='2' fill='black'/%3E%3Ccircle cx='65' cy='40' r='2' fill='black'/%3E%3Cellipse cx='50' cy='60' rx='15' ry='10' fill='white'/%3E%3C/svg%3E");
+            background-size: 60%;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        
+        .carta.encontrada {
+            visibility: hidden;
+        }
+        
+        .mensagem-vitoria {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e6ffe6;
+            border-radius: 10px;
+            color: #2e8b57;
+            font-weight: bold;
+            display: none;
+        }
+        
         /* Rodapé */
         footer {
             background: linear-gradient(135deg, var(--rosa-principal), var(--rosa-claro));
@@ -318,6 +418,11 @@
             h2 {
                 font-size: 1.6rem;
             }
+            
+            .tabuleiro-jogo {
+                grid-template-columns: repeat(4, 1fr);
+                max-width: 400px;
+            }
         }
         
         @media (max-width: 480px) {
@@ -340,6 +445,15 @@
             .galeria {
                 grid-template-columns: repeat(2, 1fr);
             }
+            
+            .tabuleiro-jogo {
+                grid-template-columns: repeat(4, 1fr);
+                max-width: 300px;
+            }
+            
+            .carta {
+                font-size: 1.5rem;
+            }
         }
     </style>
 </head>
@@ -354,6 +468,7 @@
                 <li><a href="#sobre">Sobre</a></li>
                 <li><a href="#personagens">Personagens</a></li>
                 <li><a href="#jogos">Jogos</a></li>
+                <li><a href="#jogo-interativo">Jogue Agora</a></li>
                 <li><a href="#galeria">Galeria</a></li>
                 <li><a href="#curiosidades">Curiosidades</a></li>
             </ul>
@@ -435,6 +550,27 @@
             </div>
         </section>
 
+        <section id="jogo-interativo">
+            <h2>Jogo da Memória - Hello Kitty</h2>
+            <div class="jogo-memoria">
+                <div class="controles-jogo">
+                    <button id="iniciar-jogo">Iniciar Jogo</button>
+                    <button id="reiniciar-jogo">Reiniciar</button>
+                </div>
+                <div class="info-jogo">
+                    <div>Movimentos: <span id="contador-movimentos">0</span></div>
+                    <div>Pares Encontrados: <span id="pares-encontrados">0</span>/8</div>
+                    <div>Tempo: <span id="tempo">0</span>s</div>
+                </div>
+                <div class="tabuleiro-jogo" id="tabuleiro">
+                    <!-- As cartas serão geradas dinamicamente pelo JavaScript -->
+                </div>
+                <div class="mensagem-vitoria" id="mensagem-vitoria">
+                    Parabéns! Você completou o jogo da memória!
+                </div>
+            </div>
+        </section>
+
         <section id="galeria">
             <h2>Galeria da Hello Kitty</h2>
             <div class="galeria">
@@ -445,7 +581,7 @@
                     <img src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8aGVsbG8lMjBraXR0eXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80" alt="Hello Kitty 2">
                 </div>
                 <div class="galeria-item">
-                    <img src="https://images.unsplash.com/photo-1579532537598-459ecdaf39cc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8aGVsbG8lMjBraXR0eXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80" alt="Hello Kitty 3">
+                    <img src="https://images.unsplash.com/photo-1579532537598-459ecdaf39cc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8aGelsbG8lMjBraXR0eXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80" alt="Hello Kitty 3">
                 </div>
                 <div class="galeria-item">
                     <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8aGVsbG8lMjBraXR0eXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80" alt="Hello Kitty 4">
@@ -531,6 +667,146 @@
                 }
             });
         });
+
+        // Jogo da Memória
+        const tabuleiro = document.getElementById('tabuleiro');
+        const contadorMovimentos = document.getElementById('contador-movimentos');
+        const paresEncontrados = document.getElementById('pares-encontrados');
+        const tempoElemento = document.getElementById('tempo');
+        const mensagemVitoria = document.getElementById('mensagem-vitoria');
+        const botaoIniciar = document.getElementById('iniciar-jogo');
+        const botaoReiniciar = document.getElementById('reiniciar-jogo');
+
+        let cartas = [];
+        let cartasViradas = [];
+        let movimentos = 0;
+        let paresCompletos = 0;
+        let tempo = 0;
+        let cronometro;
+        let jogoIniciado = false;
+
+        // Símbolos para as cartas (emojis relacionados à Hello Kitty)
+        const simbolos = ['🌸', '🎀', '🍓', '🍰', '🐱', '❤️', '⭐', '🍭'];
+
+        // Duplicar os símbolos para formar pares
+        const pares = [...simbolos, ...simbolos];
+
+        // Embaralhar as cartas
+        function embaralharCartas() {
+            return pares.sort(() => Math.random() - 0.5);
+        }
+
+        // Inicializar o jogo
+        function iniciarJogo() {
+            if (jogoIniciado) return;
+            
+            jogoIniciado = true;
+            movimentos = 0;
+            paresCompletos = 0;
+            tempo = 0;
+            cartasViradas = [];
+            
+            contadorMovimentos.textContent = movimentos;
+            paresEncontrados.textContent = paresCompletos;
+            tempoElemento.textContent = tempo;
+            mensagemVitoria.style.display = 'none';
+            
+            // Limpar o tabuleiro
+            tabuleiro.innerHTML = '';
+            
+            // Embaralhar e criar as cartas
+            const cartasEmbaralhadas = embaralharCartas();
+            
+            cartasEmbaralhadas.forEach((simbolo, index) => {
+                const carta = document.createElement('div');
+                carta.classList.add('carta');
+                carta.dataset.indice = index;
+                carta.dataset.simbolo = simbolo;
+                
+                const frente = document.createElement('div');
+                frente.classList.add('frente');
+                frente.textContent = simbolo;
+                
+                const verso = document.createElement('div');
+                verso.classList.add('verso');
+                
+                carta.appendChild(frente);
+                carta.appendChild(verso);
+                
+                carta.addEventListener('click', virarCarta);
+                tabuleiro.appendChild(carta);
+            });
+            
+            cartas = document.querySelectorAll('.carta');
+            
+            // Iniciar o cronômetro
+            clearInterval(cronometro);
+            cronometro = setInterval(() => {
+                tempo++;
+                tempoElemento.textContent = tempo;
+            }, 1000);
+        }
+
+        // Virar uma carta
+        function virarCarta() {
+            if (!jogoIniciado) return;
+            
+            const carta = this;
+            
+            // Não permitir virar a mesma carta duas vezes ou cartas já encontradas
+            if (carta.classList.contains('virada') || carta.classList.contains('encontrada')) {
+                return;
+            }
+            
+            // Virar a carta
+            carta.classList.add('virada');
+            cartasViradas.push(carta);
+            
+            // Verificar se temos duas cartas viradas
+            if (cartasViradas.length === 2) {
+                movimentos++;
+                contadorMovimentos.textContent = movimentos;
+                
+                const [carta1, carta2] = cartasViradas;
+                
+                // Verificar se as cartas são iguais
+                if (carta1.dataset.simbolo === carta2.dataset.simbolo) {
+                    // Cartas são iguais
+                    setTimeout(() => {
+                        carta1.classList.add('encontrada');
+                        carta2.classList.add('encontrada');
+                        cartasViradas = [];
+                        
+                        paresCompletos++;
+                        paresEncontrados.textContent = paresCompletos;
+                        
+                        // Verificar se o jogo terminou
+                        if (paresCompletos === simbolos.length) {
+                            clearInterval(cronometro);
+                            mensagemVitoria.style.display = 'block';
+                            jogoIniciado = false;
+                        }
+                    }, 500);
+                } else {
+                    // Cartas são diferentes
+                    setTimeout(() => {
+                        carta1.classList.remove('virada');
+                        carta2.classList.remove('virada');
+                        cartasViradas = [];
+                    }, 1000);
+                }
+            }
+        }
+
+        // Reiniciar o jogo
+        function reiniciarJogo() {
+            jogoIniciado = false;
+            iniciarJogo();
+        }
+
+        // Event listeners para os botões
+        botaoIniciar.addEventListener('click', iniciarJogo);
+        botaoReiniciar.addEventListener('click', reiniciarJogo);
     </script>
 </body>
 </html>
